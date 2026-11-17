@@ -134,9 +134,16 @@ gltfLoader.load('./models.glb', (gltf) => {
     }
 
     // Geometry
+    const sizesArray = new Float32Array(particles.maxCount)
+
+    for(let i = 0; i < particles.maxCount; i++){
+        sizesArray[i] = Math.random()
+    }
+
     particles.geometry = new THREE.BufferGeometry()
     particles.geometry.setAttribute('position', particles.positions[particles.index])
     particles.geometry.setAttribute('aPositionTarget', particles.positions[3])
+    particles.geometry.setAttribute('aSize', new THREE.BufferAttribute(sizesArray, 1))
 
     // Material
     particles.material = new THREE.ShaderMaterial({
@@ -144,7 +151,7 @@ gltfLoader.load('./models.glb', (gltf) => {
         fragmentShader: particlesFragmentShader,
         uniforms:
         {
-            uSize: new THREE.Uniform(0.2),
+            uSize: new THREE.Uniform(0.4),
             uResolution: new THREE.Uniform(new THREE.Vector2(sizes.width * sizes.pixelRatio, sizes.height * sizes.pixelRatio)),
             uProgress: new THREE.Uniform(0)
         },
@@ -177,7 +184,7 @@ gltfLoader.load('./models.glb', (gltf) => {
     particles.morph3 = () => { particles.morph(3) }
 
     // Tweaks
-    gui.add(particles.material.uniforms.uProgress, 'value').min(0).max(1).step(0.001).name('uProgress')
+    gui.add(particles.material.uniforms.uProgress, 'value').min(0).max(1).step(0.001).name('uProgress').listen()
     gui.add(particles, 'morph0')
     gui.add(particles, 'morph1')
     gui.add(particles, 'morph2')
