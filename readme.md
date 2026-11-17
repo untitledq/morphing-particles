@@ -2,6 +2,8 @@
 
 An interactive 3D project that renders loaded models as particles and smoothly morphs between them. Transitions are calculated in the vertex shader, while colors and target shapes can be adjusted directly through the interface.
 
+![Particle morphing demo](docs/particles-morphing.gif)
+
 This learning and portfolio project was inspired by **Three.js Journey**. Both the particle morphing technique and the modular Experience architecture follow concepts introduced in the course.
 
 ## Features
