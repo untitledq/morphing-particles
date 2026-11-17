@@ -65,4 +65,4 @@ src/
 
 ## Inspiration
 
-This project draws on learning material from **Three.js Journey**. It provides hands-on practice with particle systems, shader animation, and Three.js application structure, documented as a portfolio project.
+This project draws on learning material from **Three.js Journey**. It provides hands-on practice with particle systems, shader animation, and Three.js application structure.
